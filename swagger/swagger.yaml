@@ -1,0 +1,2597 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Аис образование - Журнал",
+    "version" : "1"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/apricode_frontenders/Journal/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : {
+    "/disciplines" : {
+      "get" : {
+        "tags" : [ "Disciplines" ],
+        "summary" : "Список школьных предметов",
+        "operationId" : "getDisciplinesIndex",
+        "parameters" : [ {
+          "name" : "pageSize",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "pageNumber",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                },
+                "example" : {
+                  "disciplines" : [ {
+                    "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "name" : "Русский язык",
+                    "classNames" : [ ]
+                  }, {
+                    "id" : "2",
+                    "name" : "Французкий язык",
+                    "classNames" : [ ]
+                  }, {
+                    "id" : "3",
+                    "name" : "Немецкий язык",
+                    "classNames" : [ ]
+                  } ],
+                  "pagination" : {
+                    "pageSize" : 5,
+                    "pageNumber" : 1,
+                    "pageCount" : 20,
+                    "totalCount" : 100,
+                    "hasNextPage" : true
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Disciplines" ],
+        "summary" : "Создание нового школьного предмета",
+        "operationId" : "postDisciplines",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/DisciplineModel"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/disciplines/{id}" : {
+      "get" : {
+        "tags" : [ "Disciplines" ],
+        "summary" : "Запрос дисциплины по id",
+        "operationId" : "getDisciplinesById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DisciplineModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Disciplines" ],
+        "summary" : "Изменинение школьного предмета",
+        "operationId" : "putDisciplinesById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/DisciplineModel"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Disciplines" ],
+        "summary" : "Изменинение школьного предмета",
+        "operationId" : "deleteDisciplinesById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Requesе"
+          }
+        }
+      }
+    },
+    "/educationalPlans" : {
+      "get" : {
+        "tags" : [ "EducationalPlans" ],
+        "summary" : "Список учебных планов",
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "query",
+          "description" : "Учебный год",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "EducationalPlans" ],
+        "summary" : "Создание нового учебного плана",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/educationalPlans_body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/educationalPlans/{id}" : {
+      "get" : {
+        "tags" : [ "EducationalPlans" ],
+        "summary" : "Запрос учебного плана по id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/EducationalPlanModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "EducationalPlans" ],
+        "summary" : "Изменение образовательного плана",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/educationalPlans_id_body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/educationalPlanLevels" : {
+      "get" : {
+        "tags" : [ "EducationalPlanLevels" ],
+        "summary" : "Список уровней учебных планов",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_3"
+                },
+                "example" : {
+                  "items" : [ {
+                    "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "name" : "Базовый",
+                    "shortName" : "Б"
+                  }, {
+                    "id" : "3fa85f64-5717-4122-b3fc-2c963f66afa6",
+                    "name" : "Углубленный",
+                    "shortName" : "У"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/years" : {
+      "get" : {
+        "tags" : [ "Years" ],
+        "summary" : "Список учебных годов",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                },
+                "example" : {
+                  "items" : [ {
+                    "id" : "2021",
+                    "text" : "2021 — 2022"
+                  }, {
+                    "id" : "2020",
+                    "text" : "2020 — 2021"
+                  }, {
+                    "id" : "2019",
+                    "text" : "2019 — 2020"
+                  } ],
+                  "currentYear" : {
+                    "id" : "2021",
+                    "text" : "2021 — 2022"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/weeks" : {
+      "get" : {
+        "tags" : [ "Weeks" ],
+        "summary" : "Список учебных недель",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                },
+                "example" : {
+                  "weeks" : [ {
+                    "id" : "1",
+                    "number" : 1,
+                    "startDate" : "2021-08-01T00:00:00.307Z",
+                    "endDate" : "2021-08-07T23:59:59.307Z"
+                  }, {
+                    "id" : "2",
+                    "number" : 2,
+                    "startDate" : "2021-08-08T00:00:00.307Z",
+                    "endDate" : "2021-08-15T23:59:59.307Z"
+                  }, {
+                    "id" : "3",
+                    "number" : 3,
+                    "startDate" : "2021-08-16T00:00:00.307Z",
+                    "endDate" : "2021-08-23T23:59:59.307Z"
+                  } ],
+                  "currentWeek" : {
+                    "id" : "1",
+                    "number" : 1,
+                    "startDate" : "2021-08-01T00:00:00.307Z",
+                    "endDate" : "2021-08-07T23:59:59.307Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/teachers" : {
+      "get" : {
+        "tags" : [ "Teachers" ],
+        "summary" : "Список преподавателей",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_6"
+                },
+                "example" : {
+                  "items" : [ {
+                    "id" : "1",
+                    "name" : "Агафонов Константин Витальевич",
+                    "disciplines" : [ {
+                      "id" : "123123",
+                      "name" : "Русский язык",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    }, {
+                      "id" : "234234",
+                      "name" : "Литература",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    } ]
+                  }, {
+                    "id" : "2",
+                    "name" : "Быстрицкая Елена Александровна",
+                    "disciplines" : [ {
+                      "id" : "345345",
+                      "name" : "Алгебра",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    }, {
+                      "id" : "456456",
+                      "name" : "Геометрия",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    } ]
+                  }, {
+                    "id" : "3",
+                    "name" : "Бирюкова Валентина Юрьевна",
+                    "disciplines" : [ {
+                      "id" : "567567",
+                      "name" : "История",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    }, {
+                      "id" : "678678",
+                      "name" : "Обществознание",
+                      "parallels" : [ {
+                        "name" : "1",
+                        "literas" : [ "А", "Б", "В" ]
+                      }, {
+                        "name" : "2",
+                        "literas" : [ "Г", "Д", "Е" ]
+                      }, {
+                        "name" : "3",
+                        "literas" : [ "Ж", "З", "И" ]
+                      } ]
+                    } ]
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Teachers" ],
+        "summary" : "Создание нового преподавателя",
+        "operationId" : "postTeachers",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TeacherModel"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_7"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/teachers/{id}" : {
+      "get" : {
+        "tags" : [ "Teachers" ],
+        "summary" : "Запрос преподавателя по id",
+        "operationId" : "getTeacherById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TeacherModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Teachers" ],
+        "summary" : "Изменинение преподавателя",
+        "operationId" : "putTeacherById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TeacherModel"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/classes" : {
+      "get" : {
+        "tags" : [ "Classes" ],
+        "summary" : "Запрос на список классов",
+        "operationId" : "getClasses",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_8"
+                },
+                "example" : {
+                  "classes" : [ {
+                    "id" : "1",
+                    "students" : [ ],
+                    "studyShift" : { },
+                    "classLead" : { },
+                    "litera" : "А",
+                    "parallel" : "1"
+                  }, {
+                    "id" : "2",
+                    "students" : [ ],
+                    "studyShift" : { },
+                    "classLead" : { },
+                    "litera" : "Б",
+                    "parallel" : "2"
+                  }, {
+                    "id" : "3",
+                    "students" : [ ],
+                    "studyShift" : { },
+                    "classLead" : { },
+                    "litera" : "В",
+                    "parallel" : "3"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/classes/{id}" : {
+      "get" : {
+        "tags" : [ "Classes" ],
+        "summary" : "Запрос класса по id",
+        "operationId" : "getClassById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClassResponseModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/pagination" : {
+      "get" : {
+        "tags" : [ "Pagination" ],
+        "summary" : "Пагинация",
+        "operationId" : "getPagination",
+        "parameters" : [ {
+          "name" : "pageSize",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "pageNumber",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaginationResponseModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/periods" : {
+      "get" : {
+        "tags" : [ "Periods" ],
+        "summary" : "Периоды",
+        "operationId" : "getPeriods",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_9"
+                },
+                "example" : {
+                  "periods" : [ {
+                    "id" : "1",
+                    "name" : "Четверть"
+                  }, {
+                    "id" : "2",
+                    "name" : "Полугодие"
+                  }, {
+                    "id" : "3",
+                    "name" : "Итоговые оценки"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/grades" : {
+      "get" : {
+        "tags" : [ "Grades" ],
+        "summary" : "Оценки",
+        "operationId" : "getGrades",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_10"
+                },
+                "example" : {
+                  "grades" : [ {
+                    "id" : "1",
+                    "name" : "1"
+                  }, {
+                    "id" : "2",
+                    "name" : "2"
+                  }, {
+                    "id" : "3",
+                    "name" : "3"
+                  }, {
+                    "id" : "4",
+                    "name" : "4"
+                  }, {
+                    "id" : "5",
+                    "name" : "5"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/gradeTypes" : {
+      "get" : {
+        "tags" : [ "Grade types" ],
+        "summary" : "Тип оценки",
+        "operationId" : "getGradeType",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_11"
+                },
+                "example" : {
+                  "gradeTypes" : [ {
+                    "id" : "1",
+                    "name" : "Д/З"
+                  }, {
+                    "id" : "2",
+                    "name" : "Работа на уроке"
+                  }, {
+                    "id" : "3",
+                    "name" : "Самостоятельная работа"
+                  }, {
+                    "id" : "4",
+                    "name" : "Контрольная работа"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/attendanceTypes" : {
+      "get" : {
+        "tags" : [ "Attendance Types" ],
+        "summary" : "Тип посещаемости",
+        "operationId" : "getAttendanceTypes",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_12"
+                },
+                "example" : {
+                  "attendanceTypes" : [ {
+                    "id" : "1",
+                    "name" : "Уважительная",
+                    "shortName" : "У"
+                  }, {
+                    "id" : "2",
+                    "name" : "Неуважительная",
+                    "shortName" : "Н"
+                  }, {
+                    "id" : "3",
+                    "name" : "Болезнь",
+                    "shortName" : "Б"
+                  }, {
+                    "id" : "4",
+                    "name" : "Пришел",
+                    "shortName" : "П"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/persons" : {
+      "get" : {
+        "tags" : [ "Persons" ],
+        "summary" : "Ученики",
+        "operationId" : "getPersons",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_13"
+                },
+                "example" : {
+                  "persons" : [ {
+                    "id" : "1",
+                    "firstName" : "Сергей",
+                    "lastName" : "Александрович",
+                    "surname" : "Белов"
+                  }, {
+                    "id" : "2",
+                    "firstName" : "Сергей",
+                    "lastName" : "Михайлович",
+                    "surname" : "Комаров"
+                  } ],
+                  "pagination" : {
+                    "pageSize" : 5,
+                    "pageNumber" : 1,
+                    "pageCount" : 20,
+                    "totalCount" : 100,
+                    "hasNextPage" : true
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/persons/{id}" : {
+      "get" : {
+        "tags" : [ "Persons" ],
+        "summary" : "Запрос ученика по id",
+        "operationId" : "getPersonById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StudentResponseModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/scoreType" : {
+      "get" : {
+        "tags" : [ "Score type" ],
+        "summary" : "Запрос типа оценки за дз",
+        "operationId" : "getScoreType",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_14"
+                },
+                "example" : {
+                  "types" : [ {
+                    "id" : "1",
+                    "name" : "С оценкой"
+                  }, {
+                    "id" : "2",
+                    "name" : "Без оценки"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/recieveType" : {
+      "get" : {
+        "tags" : [ "Recieve type" ],
+        "summary" : "Запрос типа сдачи дз",
+        "operationId" : "getRecieveType",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_15"
+                },
+                "example" : {
+                  "types" : [ {
+                    "id" : "1",
+                    "name" : "Электронный вид"
+                  }, {
+                    "id" : "2",
+                    "name" : "На бумаге"
+                  }, {
+                    "id" : "2",
+                    "name" : "Устно"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/homeWork/{id}" : {
+      "get" : {
+        "tags" : [ "Homework" ],
+        "summary" : "Запрос на дз",
+        "operationId" : "getHomeWork",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HomeWorkResponseModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/parallels" : {
+      "get" : {
+        "tags" : [ "Parallels" ],
+        "summary" : "Запрос на параллели",
+        "operationId" : "getParallels",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_16"
+                },
+                "example" : {
+                  "parallels" : [ "1", "2", "3", "3", "4", "5", "6", "7", "8", "9", "10", "11" ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/literas" : {
+      "get" : {
+        "tags" : [ "Literas" ],
+        "summary" : "Запрос на литеры",
+        "operationId" : "getLiteras",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_17"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/filiations" : {
+      "get" : {
+        "tags" : [ "Filiations" ],
+        "summary" : "Получение списка всех филиалов текущей организации",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_18"
+                },
+                "example" : {
+                  "filiations" : [ {
+                    "id" : "1",
+                    "name" : "Основной филиал",
+                    "address" : "Екатеринбург ул. Педоновcкая д. 17"
+                  }, {
+                    "id" : "2",
+                    "name" : "Дополнительный филиал",
+                    "address" : "Екатеринбург ул. Педоновcкая д. 18"
+                  }, {
+                    "id" : "3",
+                    "name" : "Пристройка на улице",
+                    "address" : "Центральное поле"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/schoolShifts" : {
+      "get" : {
+        "tags" : [ "SchoolShifts" ],
+        "summary" : "Получение списка смен",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_19"
+                },
+                "example" : {
+                  "schoolShifts" : [ {
+                    "id" : "1",
+                    "name" : "1 Смена"
+                  }, {
+                    "id" : "2",
+                    "name" : "2 Смена"
+                  }, {
+                    "id" : "3",
+                    "name" : "Вечерняя смена"
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scheduleRings" : {
+      "get" : {
+        "tags" : [ "ScheduleRings" ],
+        "summary" : "Получение расписания звонков",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_20"
+                },
+                "example" : {
+                  "scheduleRings" : [ {
+                    "id" : "1",
+                    "name" : "Понедельник",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  }, {
+                    "id" : "2",
+                    "name" : "Вторник",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  }, {
+                    "id" : "3",
+                    "name" : "Среда",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  }, {
+                    "id" : "4",
+                    "name" : "Четверг",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  }, {
+                    "id" : "5",
+                    "name" : "Пятница",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  }, {
+                    "id" : "6",
+                    "name" : "Суббота",
+                    "lessons" : [ {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    }, {
+                      "beginHour" : 10,
+                      "beginMinute" : 0,
+                      "endHour" : 10,
+                      "endMinute" : 40
+                    } ]
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/commonSchedule" : {
+      "get" : {
+        "tags" : [ "CommonSchedule" ],
+        "summary" : "Получение общего расписания",
+        "operationId" : "getCommonSchedule",
+        "parameters" : [ {
+          "name" : "organizationId",
+          "in" : "query",
+          "description" : "Организация, если не указанно то возвращается для текущей",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }, {
+          "name" : "affiliateId",
+          "in" : "query",
+          "description" : "Филиал, если не указанно то возвращается для текущей организации",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }, {
+          "name" : "yearId",
+          "in" : "query",
+          "description" : "Год, если не указанно то возвращается для текущего года",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "parallel",
+          "in" : "query",
+          "description" : "Параллель, если не указанно то возвращается для всех",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }, {
+          "name" : "weekId",
+          "in" : "query",
+          "description" : "Неделя",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "studyShiftId",
+          "in" : "query",
+          "description" : "Смена, если не указано то возвращается для всех",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "litera",
+          "in" : "query",
+          "description" : "Литера класса, если не указанно то возвращается для всех",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CommonScheduleResponseModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "DisciplineModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Русский язык"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Школьный предмет"
+      },
+      "EducationalPlanModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "hours" : {
+            "type" : "number",
+            "example" : 123
+          },
+          "discipline" : {
+            "$ref" : "#/components/schemas/DisciplineModel"
+          },
+          "level" : {
+            "$ref" : "#/components/schemas/EducationalPlanLevelModel"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Учебный план"
+      },
+      "EducationalPlanLevelModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Базовый"
+          },
+          "shortName" : {
+            "type" : "string",
+            "example" : "Б"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Учебный план"
+      },
+      "YearModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "text" : {
+            "type" : "string",
+            "example" : "2021/2022"
+          }
+        },
+        "description" : "Годы"
+      },
+      "TeacherModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Агафонов Константин Витальевич"
+          },
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TeacherModel_disciplines"
+            }
+          }
+        },
+        "description" : "Учителя"
+      },
+      "PaginationResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "pageSize" : {
+            "type" : "number",
+            "example" : 5
+          },
+          "pageNumber" : {
+            "type" : "number",
+            "example" : 1
+          },
+          "pageCount" : {
+            "type" : "number",
+            "example" : 20
+          },
+          "totalCount" : {
+            "type" : "number",
+            "example" : 100
+          },
+          "hasNextPage" : {
+            "type" : "boolean",
+            "example" : true
+          }
+        },
+        "description" : "Пагинация"
+      },
+      "PeriodsResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Периоды"
+      },
+      "GradesResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Оценки"
+      },
+      "GradeTypeResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Оценки"
+      },
+      "AttendanceTypeResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "shortName" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Вариант посещаемости"
+      },
+      "StudentResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "surname" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Ученик"
+      },
+      "StudentAttendanceModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "attendance" : {
+            "$ref" : "#/components/schemas/AttendanceTypeResponseModel"
+          },
+          "person" : {
+            "$ref" : "#/components/schemas/StudentResponseModel"
+          }
+        },
+        "description" : "Посещаемость отдельного человека"
+      },
+      "MarkModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "grade" : {
+            "$ref" : "#/components/schemas/GradesResponseModel"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/GradeTypeResponseModel"
+          }
+        },
+        "description" : "Отметка"
+      },
+      "StudentGradeModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "studentId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "marks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/MarkModel"
+            }
+          }
+        },
+        "description" : "Оценки отдельного ученика"
+      },
+      "ScoreTypeResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Тип дз(с оценкой или без)"
+      },
+      "RecieveTypeResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Тип работы для дз"
+      },
+      "HomeWorkResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "scoreTupe" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "recieveType" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "deadline" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "files" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/HomeWorkResponseModel_files"
+            }
+          }
+        },
+        "description" : "Домашняя работа"
+      },
+      "RoleModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Роль работника школы"
+      },
+      "ClassResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "students" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/StudentResponseModel"
+            }
+          },
+          "studyShift" : {
+            "$ref" : "#/components/schemas/SchoolShiftModel"
+          },
+          "classLead" : {
+            "$ref" : "#/components/schemas/PersonnelModel"
+          },
+          "litera" : {
+            "$ref" : "#/components/schemas/LiteraResponseModel"
+          },
+          "parallel" : {
+            "$ref" : "#/components/schemas/ParllelResponseModel"
+          }
+        },
+        "description" : "Школьный класс"
+      },
+      "PersonnelModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "surname" : {
+            "type" : "string"
+          },
+          "role" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RoleModel"
+            }
+          },
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DisciplineModel"
+            }
+          }
+        },
+        "description" : "Персонал"
+      },
+      "LiteraResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Буква класса"
+      },
+      "ParllelResponseModel" : {
+        "type" : "array",
+        "description" : "Параллель",
+        "items" : {
+          "type" : "string"
+        }
+      },
+      "FiliationModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "address" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Филиал учебного заведения"
+      },
+      "SlotLessonModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "beginHour" : {
+            "type" : "number"
+          },
+          "beginMinute" : {
+            "type" : "number"
+          },
+          "endHour" : {
+            "type" : "number"
+          },
+          "endMinute" : {
+            "type" : "number"
+          }
+        },
+        "description" : "Слот урока"
+      },
+      "RoomModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DisciplineModel"
+            }
+          },
+          "owner" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PersonnelModel"
+            }
+          }
+        },
+        "description" : "Кабинет"
+      },
+      "LessonModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "room" : {
+            "$ref" : "#/components/schemas/RoomModel"
+          },
+          "class" : {
+            "$ref" : "#/components/schemas/ClassResponseModel"
+          },
+          "attendance" : {
+            "$ref" : "#/components/schemas/StudentAttendanceModel"
+          },
+          "grades" : {
+            "$ref" : "#/components/schemas/StudentGradeModel"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "theme" : {
+            "type" : "string"
+          },
+          "workOnLesson" : {
+            "type" : "string"
+          },
+          "files" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/HomeWorkResponseModel_files"
+            }
+          },
+          "homeWork" : {
+            "$ref" : "#/components/schemas/HomeWorkResponseModel"
+          }
+        },
+        "description" : "Сущность класса"
+      },
+      "SchoolShiftModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "lessons" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SlotLessonModel"
+            }
+          }
+        }
+      },
+      "WeekModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "number" : {
+            "type" : "number"
+          },
+          "startDate" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "endDate" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "days" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DayModel"
+            }
+          }
+        }
+      },
+      "DayModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "shift" : {
+            "$ref" : "#/components/schemas/SchoolShiftModel"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "isWeekend" : {
+            "type" : "boolean"
+          },
+          "slots" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SlotLessonModel"
+            }
+          }
+        }
+      },
+      "LessonRingsModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "beginHour" : {
+            "type" : "number"
+          },
+          "beginMinute" : {
+            "type" : "number"
+          },
+          "endHour" : {
+            "type" : "number"
+          },
+          "endMinute" : {
+            "type" : "number"
+          }
+        }
+      },
+      "DayRingsModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Понедельник"
+          },
+          "lessons" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/LessonRingsModel"
+            }
+          }
+        }
+      },
+      "CommonScheduleClassResponseModel" : {
+        "required" : [ "class" ],
+        "type" : "object",
+        "properties" : {
+          "class" : {
+            "$ref" : "#/components/schemas/CommonScheduleClassResponseModel_class"
+          },
+          "days" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommonScheduleDayResponseModel"
+            }
+          }
+        }
+      },
+      "CommonScheduleDayResponseModel" : {
+        "required" : [ "date", "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Понедельник"
+          },
+          "isWeekend" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "date:" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "slots" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommonScheduleSlotResponseModel"
+            }
+          }
+        }
+      },
+      "CommonScheduleSlotResponseModel" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "beginDate" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "finishDate" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "lesson" : {
+            "$ref" : "#/components/schemas/CommonScheduleLessonResponseModel"
+          }
+        }
+      },
+      "CommonScheduleLessonResponseModel" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Математика"
+          },
+          "room" : {
+            "type" : "string",
+            "example" : "Спортзал"
+          },
+          "teacher" : {
+            "type" : "string",
+            "example" : "Третьяков Э.В."
+          }
+        },
+        "nullable" : true
+      },
+      "CommonScheduleResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "schedule" : {
+            "$ref" : "#/components/schemas/CommonScheduleResponseModel_schedule"
+          }
+        }
+      },
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DisciplineModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_1" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }
+      },
+      "inline_response_200_2" : {
+        "type" : "object",
+        "properties" : {
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EducationalPlanModel"
+            }
+          }
+        }
+      },
+      "educationalPlans_body" : {
+        "type" : "object",
+        "properties" : {
+          "disciplineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "levelId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "hours" : {
+            "type" : "number"
+          }
+        }
+      },
+      "educationalPlans_id_body" : {
+        "type" : "object",
+        "properties" : {
+          "disciplineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "levelId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "hours" : {
+            "type" : "number"
+          }
+        }
+      },
+      "inline_response_200_3" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EducationalPlanLevelModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_4" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/YearModel"
+            }
+          },
+          "currentYear" : {
+            "$ref" : "#/components/schemas/YearModel"
+          }
+        }
+      },
+      "inline_response_200_5" : {
+        "type" : "object",
+        "properties" : {
+          "weeks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/WeekModel"
+            }
+          },
+          "currentWeek" : {
+            "$ref" : "#/components/schemas/YearModel"
+          }
+        }
+      },
+      "inline_response_200_6" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TeacherModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_7" : {
+        "type" : "object",
+        "properties" : {
+          "schema" : {
+            "$ref" : "#/components/schemas/TeacherModel"
+          }
+        }
+      },
+      "inline_response_200_8" : {
+        "type" : "object",
+        "properties" : {
+          "classes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ClassResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_9" : {
+        "type" : "object",
+        "properties" : {
+          "periods" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PeriodsResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_10" : {
+        "type" : "object",
+        "properties" : {
+          "grades" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/GradesResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_11" : {
+        "type" : "object",
+        "properties" : {
+          "gradeTypes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/GradeTypeResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_12" : {
+        "type" : "object",
+        "properties" : {
+          "attendanceTypes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AttendanceTypeResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_13" : {
+        "type" : "object",
+        "properties" : {
+          "persons" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/StudentResponseModel"
+            }
+          },
+          "pagination" : {
+            "$ref" : "#/components/schemas/PaginationResponseModel"
+          }
+        }
+      },
+      "inline_response_200_14" : {
+        "type" : "object",
+        "properties" : {
+          "types" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ScoreTypeResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_15" : {
+        "type" : "object",
+        "properties" : {
+          "types" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RecieveTypeResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_16" : {
+        "type" : "object",
+        "properties" : {
+          "parallels" : {
+            "$ref" : "#/components/schemas/ParllelResponseModel"
+          }
+        }
+      },
+      "inline_response_200_17" : {
+        "type" : "object",
+        "properties" : {
+          "literas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/LiteraResponseModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_18" : {
+        "type" : "object",
+        "properties" : {
+          "filiations" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/FiliationModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_19" : {
+        "type" : "object",
+        "properties" : {
+          "schoolShifts" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SchoolShiftModel"
+            }
+          }
+        }
+      },
+      "inline_response_200_20" : {
+        "type" : "object",
+        "properties" : {
+          "scheduleRings" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DayRingsModel"
+            }
+          }
+        }
+      },
+      "TeacherModel_disciplines" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "literas" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "example" : null
+      },
+      "HomeWorkResponseModel_files" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "example" : null
+      },
+      "CommonScheduleClassResponseModel_class" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "litera" : {
+            "type" : "string",
+            "example" : "а"
+          }
+        },
+        "example" : null
+      },
+      "CommonScheduleResponseModel_schedule_week" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "number" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 1
+          }
+        },
+        "example" : null
+      },
+      "CommonScheduleResponseModel_schedule_studyShift" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "1"
+          }
+        },
+        "example" : null
+      },
+      "CommonScheduleResponseModel_schedule_parallels" : {
+        "required" : [ "name", "studyShift" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "1"
+          },
+          "studyShift" : {
+            "$ref" : "#/components/schemas/CommonScheduleResponseModel_schedule_studyShift"
+          },
+          "classes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommonScheduleClassResponseModel"
+            }
+          }
+        },
+        "example" : null
+      },
+      "CommonScheduleResponseModel_schedule" : {
+        "required" : [ "week" ],
+        "type" : "object",
+        "properties" : {
+          "week" : {
+            "$ref" : "#/components/schemas/CommonScheduleResponseModel_schedule_week"
+          },
+          "parallels" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommonScheduleResponseModel_schedule_parallels"
+            }
+          }
+        },
+        "example" : null
+      }
+    }
+  }
+}
