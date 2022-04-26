@@ -1781,6 +1781,17 @@
         "summary" : "Получение общего расписания",
         "operationId" : "getCommonSchedule",
         "parameters" : [ {
+          "name" : "weekId",
+          "in" : "query",
+          "description" : "Неделя, если не указано то возвращается для текущей",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }, {
           "name" : "organizationId",
           "in" : "query",
           "description" : "Организация, если не указанно то возвращается для текущей",
@@ -1824,16 +1835,6 @@
             "nullable" : true
           }
         }, {
-          "name" : "weekId",
-          "in" : "query",
-          "description" : "Неделя",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
           "name" : "studyShiftId",
           "in" : "query",
           "description" : "Смена, если не указано то возвращается для всех",
@@ -1862,6 +1863,164 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/CommonScheduleResponseModel"
+                },
+                "example" : {
+                  "schedule" : {
+                    "week" : {
+                      "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                      "number" : 1
+                    },
+                    "parallels" : [ {
+                      "name" : "1",
+                      "studyShift" : {
+                        "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "name" : "1"
+                      },
+                      "classes" : [ {
+                        "class" : {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "litera" : "а"
+                        },
+                        "days" : [ {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa1",
+                          "name" : "Понедельник",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa1",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          }, {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+                            "beginDate" : "2022-04-26T09:38:13.434Z",
+                            "finishDate" : "2022-04-26T09:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          }, {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+                            "beginDate" : "2022-04-26T10:38:13.434Z",
+                            "finishDate" : "2022-04-26T10:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          }, {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa4",
+                            "beginDate" : "2022-04-26T11:38:13.434Z",
+                            "finishDate" : "2022-04-26T11:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          }, {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa5",
+                            "beginDate" : "2022-04-26T12:38:13.434Z",
+                            "finishDate" : "2022-04-26T12:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        }, {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+                          "name" : "Вторник",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        }, {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+                          "name" : "Среда",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        }, {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa4",
+                          "name" : "Четверг",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        }, {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa5",
+                          "name" : "Пятница",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        }, {
+                          "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "name" : "Суббота",
+                          "isWeekend" : false,
+                          "date" : "2022-04-26",
+                          "slots" : [ {
+                            "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "beginDate" : "2022-04-26T08:38:13.434Z",
+                            "finishDate" : "2022-04-26T08:38:13.434Z",
+                            "lesson" : {
+                              "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                              "name" : "Математика",
+                              "room" : "Спортзал",
+                              "teacher" : "Третьяков Э.В."
+                            }
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  }
                 }
               }
             }
@@ -2561,7 +2720,7 @@
             "type" : "boolean",
             "example" : false
           },
-          "date:" : {
+          "date" : {
             "type" : "string",
             "format" : "date"
           },
@@ -2584,13 +2743,11 @@
           },
           "beginDate" : {
             "type" : "string",
-            "format" : "date-time",
-            "nullable" : true
+            "format" : "date-time"
           },
           "finishDate" : {
             "type" : "string",
-            "format" : "date-time",
-            "nullable" : true
+            "format" : "date-time"
           },
           "lesson" : {
             "$ref" : "#/components/schemas/CommonScheduleLessonResponseModel"
@@ -2618,8 +2775,7 @@
             "type" : "string",
             "example" : "Третьяков Э.В."
           }
-        },
-        "nullable" : true
+        }
       },
       "CommonScheduleResponseModel" : {
         "type" : "object",
@@ -3027,6 +3183,7 @@
         "example" : null
       },
       "CommonScheduleClassResponseModel_class" : {
+        "required" : [ "id", "litera" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -3042,6 +3199,7 @@
         "example" : null
       },
       "CommonScheduleResponseModel_schedule_week" : {
+        "required" : [ "id", "number" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -3058,6 +3216,7 @@
         "example" : null
       },
       "CommonScheduleResponseModel_schedule_studyShift" : {
+        "required" : [ "id", "name" ],
         "type" : "object",
         "properties" : {
           "id" : {
