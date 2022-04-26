@@ -455,6 +455,40 @@
         }
       }
     },
+    "/workers" : {
+      "get" : {
+        "tags" : [ "Workers" ],
+        "summary" : "Список работников школы",
+        "operationId" : "getWorkers",
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_6"
+                },
+                "example" : {
+                  "workers" : [ {
+                    "workerId" : "1",
+                    "workerName" : "Агафонов Константин Витальевич"
+                  }, {
+                    "workerId" : "2",
+                    "workerName" : "Быстрицкая Елена Александровна"
+                  }, {
+                    "workerId" : "3",
+                    "workerName" : "Бирюкова Валентина Юрьевна"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
     "/teachers" : {
       "get" : {
         "tags" : [ "Teachers" ],
@@ -465,37 +499,43 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 },
                 "example" : {
-                  "items" : [ {
+                  "teachers" : [ {
                     "id" : "1",
                     "name" : "Агафонов Константин Витальевич",
                     "disciplines" : [ {
                       "id" : "123123",
                       "name" : "Русский язык",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "1",
+                        "litera" : "А"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "1",
+                        "litera" : "Б"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "1",
+                        "litera" : "В"
                       } ]
                     }, {
                       "id" : "234234",
                       "name" : "Литература",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "2",
+                        "litera" : "Г"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "2",
+                        "litera" : "Д"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "2",
+                        "litera" : "Е"
                       } ]
                     } ]
                   }, {
@@ -504,28 +544,34 @@
                     "disciplines" : [ {
                       "id" : "345345",
                       "name" : "Алгебра",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "10",
+                        "litera" : "А"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "10",
+                        "litera" : "Б"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "10",
+                        "litera" : "В"
                       } ]
                     }, {
                       "id" : "456456",
                       "name" : "Геометрия",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "11",
+                        "litera" : "А"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "11",
+                        "litera" : "Б"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "11",
+                        "litera" : "В"
                       } ]
                     } ]
                   }, {
@@ -534,28 +580,34 @@
                     "disciplines" : [ {
                       "id" : "567567",
                       "name" : "История",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "9",
+                        "litera" : "А"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "9",
+                        "litera" : "Б"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "9",
+                        "litera" : "В"
                       } ]
                     }, {
                       "id" : "678678",
                       "name" : "Обществознание",
-                      "parallels" : [ {
-                        "name" : "1",
-                        "literas" : [ "А", "Б", "В" ]
+                      "classes" : [ {
+                        "id" : "1",
+                        "parallel" : "8",
+                        "litera" : "А"
                       }, {
-                        "name" : "2",
-                        "literas" : [ "Г", "Д", "Е" ]
+                        "id" : "2",
+                        "parallel" : "8",
+                        "litera" : "Б"
                       }, {
-                        "name" : "3",
-                        "literas" : [ "Ж", "З", "И" ]
+                        "id" : "3",
+                        "parallel" : "8",
+                        "litera" : "В"
                       } ]
                     } ]
                   } ]
@@ -576,7 +628,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/TeacherModel"
+                "$ref" : "#/components/schemas/teachers_body"
               }
             }
           }
@@ -587,7 +639,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_7"
+                  "$ref" : "#/components/schemas/inline_response_200_8"
                 }
               }
             }
@@ -651,7 +703,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/TeacherModel"
+                "$ref" : "#/components/schemas/teachers_id_body"
               }
             }
           }
@@ -684,7 +736,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_8"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 },
                 "example" : {
                   "classes" : [ {
@@ -807,7 +859,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_9"
+                  "$ref" : "#/components/schemas/inline_response_200_10"
                 },
                 "example" : {
                   "periods" : [ {
@@ -841,7 +893,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_10"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 },
                 "example" : {
                   "grades" : [ {
@@ -881,7 +933,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_11"
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 },
                 "example" : {
                   "gradeTypes" : [ {
@@ -918,7 +970,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_12"
+                  "$ref" : "#/components/schemas/inline_response_200_13"
                 },
                 "example" : {
                   "attendanceTypes" : [ {
@@ -959,7 +1011,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_13"
+                  "$ref" : "#/components/schemas/inline_response_200_14"
                 },
                 "example" : {
                   "persons" : [ {
@@ -1035,7 +1087,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_14"
+                  "$ref" : "#/components/schemas/inline_response_200_15"
                 },
                 "example" : {
                   "types" : [ {
@@ -1066,7 +1118,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_15"
+                  "$ref" : "#/components/schemas/inline_response_200_16"
                 },
                 "example" : {
                   "types" : [ {
@@ -1134,7 +1186,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_16"
+                  "$ref" : "#/components/schemas/inline_response_200_17"
                 },
                 "example" : {
                   "parallels" : [ "1", "2", "3", "3", "4", "5", "6", "7", "8", "9", "10", "11" ]
@@ -1156,7 +1208,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_17"
+                  "$ref" : "#/components/schemas/inline_response_200_18"
                 }
               }
             }
@@ -1177,7 +1229,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_18"
+                  "$ref" : "#/components/schemas/inline_response_200_19"
                 },
                 "example" : {
                   "filiations" : [ {
@@ -1213,7 +1265,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_19"
+                  "$ref" : "#/components/schemas/inline_response_200_20"
                 },
                 "example" : {
                   "schoolShifts" : [ {
@@ -1236,146 +1288,486 @@
     "/scheduleRings" : {
       "get" : {
         "tags" : [ "ScheduleRings" ],
-        "summary" : "Получение расписания звонков",
+        "summary" : "Получение расписания звонков по фильтру",
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "query",
+          "description" : "Год, если не указанно то возвращается для текущего года",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "weekId",
+          "in" : "query",
+          "description" : "Неделя, если не указанно то возвращается для текущей",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "schoolShiftId",
+          "in" : "query",
+          "description" : "Школьная смена, если не указанно то возвращается первая",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "paralelId",
+          "in" : "query",
+          "description" : "номер паралели, если не указанно то возвращается первая",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "Success",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_20"
+                  "$ref" : "#/components/schemas/ScheduleRingsGetResponseModel"
                 },
                 "example" : {
-                  "scheduleRings" : [ {
-                    "id" : "1",
-                    "name" : "Понедельник",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
-                  }, {
-                    "id" : "2",
-                    "name" : "Вторник",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
-                  }, {
-                    "id" : "3",
-                    "name" : "Среда",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
-                  }, {
-                    "id" : "4",
-                    "name" : "Четверг",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
-                  }, {
-                    "id" : "5",
-                    "name" : "Пятница",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
-                  }, {
-                    "id" : "6",
-                    "name" : "Суббота",
-                    "lessons" : [ {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    }, {
-                      "beginHour" : 10,
-                      "beginMinute" : 0,
-                      "endHour" : 10,
-                      "endMinute" : 40
-                    } ]
+                  "schedules" : [ {
+                    "year" : {
+                      "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                      "text" : "2021/2022"
+                    },
+                    "week" : {
+                      "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                      "number" : 12,
+                      "startDate" : "string",
+                      "endDate" : "string"
+                    },
+                    "schoolShift" : {
+                      "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                      "name" : "1 Смена"
+                    },
+                    "schedule" : {
+                      "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                      "days" : [ {
+                        "name" : "Понедельник",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      }, {
+                        "name" : "Вторник",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      }, {
+                        "name" : "Среда",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      }, {
+                        "name" : "Четверг",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      }, {
+                        "name" : "Пятница",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      }, {
+                        "name" : "Суббота",
+                        "lessons" : [ {
+                          "beginHour" : 8,
+                          "beginMinute" : 0,
+                          "endHour" : 8,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 9,
+                          "beginMinute" : 0,
+                          "endHour" : 9,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 10,
+                          "beginMinute" : 0,
+                          "endHour" : 10,
+                          "endMinute" : 40
+                        }, {
+                          "beginHour" : 11,
+                          "beginMinute" : 0,
+                          "endHour" : 11,
+                          "endMinute" : 40
+                        } ]
+                      } ]
+                    }
                   } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scheduleRings/{id}" : {
+      "get" : {
+        "tags" : [ "ScheduleRings" ],
+        "summary" : "Получение расписания звонков по  id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ScheduleRingsGetIdResponseModel"
+                },
+                "example" : {
+                  "schedule" : {
+                    "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "days" : [ {
+                      "name" : "Понедельник",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    }, {
+                      "name" : "Вторник",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    }, {
+                      "name" : "Среда",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    }, {
+                      "name" : "Четверг",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    }, {
+                      "name" : "Пятница",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    }, {
+                      "name" : "Суббота",
+                      "lessons" : [ {
+                        "beginHour" : 8,
+                        "beginMinute" : 0,
+                        "endHour" : 8,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 9,
+                        "beginMinute" : 0,
+                        "endHour" : 9,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 10,
+                        "beginMinute" : 0,
+                        "endHour" : 10,
+                        "endMinute" : 40
+                      }, {
+                        "beginHour" : 11,
+                        "beginMinute" : 0,
+                        "endHour" : 11,
+                        "endMinute" : 40
+                      } ]
+                    } ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "ScheduleRings" ],
+        "summary" : "Изменение расписания звонков по  id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ScheduleRingsModel"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ScheduleRingsModel"
                 }
               }
             }
@@ -1483,13 +1875,17 @@
   },
   "components" : {
     "schemas" : {
+      "UUIDModel" : {
+        "type" : "string",
+        "format" : "uuid",
+        "readOnly" : true,
+        "example" : "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      },
       "DisciplineModel" : {
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
+            "$ref" : "#/components/schemas/UUIDModel"
           },
           "name" : {
             "type" : "string",
@@ -1503,9 +1899,7 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
+            "$ref" : "#/components/schemas/UUIDModel"
           },
           "hours" : {
             "type" : "number",
@@ -1525,9 +1919,7 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
+            "$ref" : "#/components/schemas/UUIDModel"
           },
           "name" : {
             "type" : "string",
@@ -1559,12 +1951,11 @@
       "TeacherModel" : {
         "type" : "object",
         "properties" : {
-          "id" : {
+          "teacherId" : {
             "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
+            "format" : "uuid"
           },
-          "name" : {
+          "teacherName" : {
             "type" : "string",
             "example" : "Агафонов Константин Витальевич"
           },
@@ -1801,12 +2192,12 @@
       "RoleModel" : {
         "type" : "object",
         "properties" : {
-          "id" : {
+          "workerId" : {
             "type" : "string",
             "format" : "uuid",
             "readOnly" : true
           },
-          "name" : {
+          "workerName" : {
             "type" : "string"
           }
         },
@@ -2006,13 +2397,8 @@
             "readOnly" : true
           },
           "name" : {
-            "type" : "string"
-          },
-          "lessons" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/SlotLessonModel"
-            }
+            "type" : "string",
+            "example" : "1 Смена"
           }
         }
       },
@@ -2025,7 +2411,8 @@
             "readOnly" : true
           },
           "number" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 12
           },
           "startDate" : {
             "type" : "string",
@@ -2034,12 +2421,6 @@
           "endDate" : {
             "type" : "string",
             "format" : "dateTime"
-          },
-          "days" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DayModel"
-            }
           }
         }
       },
@@ -2075,33 +2456,28 @@
       "LessonRingsModel" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
-          },
           "beginHour" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 8
           },
           "beginMinute" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 0
           },
           "endHour" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 8
           },
           "endMinute" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 40
           }
-        }
+        },
+        "description" : "Звонок на урок"
       },
       "DayRingsModel" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid",
-            "readOnly" : true
-          },
           "name" : {
             "type" : "string",
             "example" : "Понедельник"
@@ -2112,7 +2488,46 @@
               "$ref" : "#/components/schemas/LessonRingsModel"
             }
           }
-        }
+        },
+        "description" : "Звонок на урок в дне"
+      },
+      "ScheduleRingsModel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "days" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DayRingsModel"
+            }
+          }
+        },
+        "description" : "Расписание звонков"
+      },
+      "ScheduleRingsGetResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "schedules" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ScheduleRingsGetResponseModel_schedules"
+            }
+          }
+        },
+        "description" : "Ответ на запрос расписания звонков"
+      },
+      "ScheduleRingsGetIdResponseModel" : {
+        "type" : "object",
+        "properties" : {
+          "schedule" : {
+            "$ref" : "#/components/schemas/ScheduleRingsModel"
+          }
+        },
+        "description" : "Ответ на запрос расписания звонков по id"
       },
       "CommonScheduleClassResponseModel" : {
         "required" : [ "class" ],
@@ -2319,10 +2734,10 @@
       "inline_response_200_6" : {
         "type" : "object",
         "properties" : {
-          "items" : {
+          "workers" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/TeacherModel"
+              "$ref" : "#/components/schemas/RoleModel"
             }
           }
         }
@@ -2330,12 +2745,85 @@
       "inline_response_200_7" : {
         "type" : "object",
         "properties" : {
-          "schema" : {
-            "$ref" : "#/components/schemas/TeacherModel"
+          "teachers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TeacherModel"
+            }
+          }
+        }
+      },
+      "teachers_disciplines" : {
+        "type" : "object",
+        "properties" : {
+          "disciplineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "classes" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
+          }
+        },
+        "example" : null
+      },
+      "teachers_body" : {
+        "type" : "object",
+        "properties" : {
+          "workerId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/teachers_disciplines"
+            }
           }
         }
       },
       "inline_response_200_8" : {
+        "type" : "object",
+        "properties" : {
+          "teacher" : {
+            "$ref" : "#/components/schemas/TeacherModel"
+          }
+        }
+      },
+      "teachersid_disciplines" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "classes" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "example" : null
+      },
+      "teachers_id_body" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "disciplines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/teachersid_disciplines"
+            }
+          }
+        }
+      },
+      "inline_response_200_9" : {
         "type" : "object",
         "properties" : {
           "classes" : {
@@ -2346,7 +2834,7 @@
           }
         }
       },
-      "inline_response_200_9" : {
+      "inline_response_200_10" : {
         "type" : "object",
         "properties" : {
           "periods" : {
@@ -2357,7 +2845,7 @@
           }
         }
       },
-      "inline_response_200_10" : {
+      "inline_response_200_11" : {
         "type" : "object",
         "properties" : {
           "grades" : {
@@ -2368,7 +2856,7 @@
           }
         }
       },
-      "inline_response_200_11" : {
+      "inline_response_200_12" : {
         "type" : "object",
         "properties" : {
           "gradeTypes" : {
@@ -2379,7 +2867,7 @@
           }
         }
       },
-      "inline_response_200_12" : {
+      "inline_response_200_13" : {
         "type" : "object",
         "properties" : {
           "attendanceTypes" : {
@@ -2390,7 +2878,7 @@
           }
         }
       },
-      "inline_response_200_13" : {
+      "inline_response_200_14" : {
         "type" : "object",
         "properties" : {
           "persons" : {
@@ -2404,7 +2892,7 @@
           }
         }
       },
-      "inline_response_200_14" : {
+      "inline_response_200_15" : {
         "type" : "object",
         "properties" : {
           "types" : {
@@ -2415,7 +2903,7 @@
           }
         }
       },
-      "inline_response_200_15" : {
+      "inline_response_200_16" : {
         "type" : "object",
         "properties" : {
           "types" : {
@@ -2426,7 +2914,7 @@
           }
         }
       },
-      "inline_response_200_16" : {
+      "inline_response_200_17" : {
         "type" : "object",
         "properties" : {
           "parallels" : {
@@ -2434,7 +2922,7 @@
           }
         }
       },
-      "inline_response_200_17" : {
+      "inline_response_200_18" : {
         "type" : "object",
         "properties" : {
           "literas" : {
@@ -2445,7 +2933,7 @@
           }
         }
       },
-      "inline_response_200_18" : {
+      "inline_response_200_19" : {
         "type" : "object",
         "properties" : {
           "filiations" : {
@@ -2456,7 +2944,7 @@
           }
         }
       },
-      "inline_response_200_19" : {
+      "inline_response_200_20" : {
         "type" : "object",
         "properties" : {
           "schoolShifts" : {
@@ -2467,27 +2955,37 @@
           }
         }
       },
-      "inline_response_200_20" : {
+      "TeacherModel_classes" : {
         "type" : "object",
         "properties" : {
-          "scheduleRings" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DayRingsModel"
-            }
+          "classId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "parallel" : {
+            "type" : "string"
+          },
+          "litera" : {
+            "type" : "string"
           }
-        }
+        },
+        "example" : null
       },
       "TeacherModel_disciplines" : {
         "type" : "object",
         "properties" : {
-          "name" : {
+          "disciplineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "disciplineName" : {
             "type" : "string"
           },
-          "literas" : {
+          "classes" : {
             "type" : "array",
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/TeacherModel_classes"
             }
           }
         },
@@ -2506,6 +3004,24 @@
           },
           "type" : {
             "type" : "string"
+          }
+        },
+        "example" : null
+      },
+      "ScheduleRingsGetResponseModel_schedules" : {
+        "type" : "object",
+        "properties" : {
+          "year" : {
+            "$ref" : "#/components/schemas/YearModel"
+          },
+          "week" : {
+            "$ref" : "#/components/schemas/WeekModel"
+          },
+          "schoolShift" : {
+            "$ref" : "#/components/schemas/SchoolShiftModel"
+          },
+          "schedule" : {
+            "$ref" : "#/components/schemas/ScheduleRingsModel"
           }
         },
         "example" : null
